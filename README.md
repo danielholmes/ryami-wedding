@@ -27,4 +27,6 @@ Which makes project available at http://localhost:8054/
 
 ## Deploying to Production
 
-TODO:
+NOTE: You'll require the correct AWS credentials configured in your user account in order to deploy.
+
+`yarn run deploy`
