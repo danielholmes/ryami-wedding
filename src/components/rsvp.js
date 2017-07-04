@@ -78,9 +78,10 @@ class RSVP extends React.Component {
                      onChange={this.createChangeHandler('hearAdjective')} />
           to hear about your upcoming wedding celebrations!
         </div>
-        <AttendanceFieldset label="Sangeet" date={new Date(2017, 10, 24)} value={this.state.sangeetAttendance}
+        <AttendanceFieldset label="Sangeet" date="Friday the 24th of November 2017" value={this.state.sangeetAttendance}
                             onChange={this.createAttendanceChangeHandler('sangeetAttendance')} />
-        <AttendanceFieldset label="Wedding" date={new Date(2017, 10, 26)} value={this.state.ceremonyAttendance}
+        <AttendanceFieldset label="Wedding" date="Sunday the 26th of November 2017"
+                            value={this.state.ceremonyAttendance}
                             onChange={this.createAttendanceChangeHandler('ceremonyAttendance')} />
         {(this.state.ceremonyAttendance.isComing || this.state.sangeetAttendance.isComing) && <div>
           <div>

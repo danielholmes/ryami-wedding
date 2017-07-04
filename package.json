@@ -9,30 +9,34 @@
     "babel-loader": "^7.1.0",
     "babel-plugin-transform-strict-mode": "^6.24.1",
     "babel-preset-env": "^1.5.2",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
     "clean-webpack-plugin": "^0.1.16",
     "css-loader": "^0.28.4",
+    "faker": "^4.1.0",
     "file-loader": "^0.11.2",
     "html-webpack-plugin": "^2.28.0",
+    "node-lambda": "^0.11.0",
+    "s3-deploy": "^0.7.5",
     "style-loader": "^0.18.2",
+    "uglifyjs-webpack-plugin": "^0.4.6",
     "url-loader": "^0.5.9",
     "webpack": "^3.0.0",
     "webpack-dev-server": "^2.5.0"
   },
   "dependencies": {
     "babel-polyfill": "^6.23.0",
-    "babel-preset-react": "^6.24.1",
-    "babel-preset-stage-0": "^6.24.1",
-    "jquery": "^3.2.1",
-    "moment": "^2.18.1",
     "prop-types": "^15.5.10",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-router-dom": "^4.1.1",
-    "s3-deploy": "^0.7.5"
+    "whatwg-fetch": "^2.0.3"
   },
   "scripts": {
-    "serve": "./node_modules/.bin/webpack-dev-server --config webpack.config.js --port 8054",
-    "build": "./node_modules/.bin/webpack --config webpack.config.js",
-    "deploy": "yarn run build && ./node_modules/.bin/s3-deploy './dist/**' --cwd './dist/' --region ap-southeast-2 --bucket www.ryamiwedding.com"
+    "serve": "./node_modules/.bin/webpack-dev-server --config webpack.development.config.js --port 8054",
+    "build": "./node_modules/.bin/webpack --config webpack.production.config.js",
+    "deploy-frontend": "yarn run build && ./node_modules/.bin/s3-deploy './dist/**' --cwd './dist/' --region ap-southeast-2 --bucket www.ryamiwedding.com",
+    "deploy-backend": "cd backend && ../node_modules/.bin/node-lambda deploy",
+    "deploy": "yarn run deploy-frontend && yarn run deploy-backend"
   }
 }

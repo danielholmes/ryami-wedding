@@ -1,2 +1,5 @@
 /node_modules
 /dist
+/backend/.lambda
+/backend/.env
+!/backend/.env.dist

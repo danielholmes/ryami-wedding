@@ -17,7 +17,7 @@ Running a dev server:
 
 `yarn run serve`
 
-Which makes project available at http://localhost:8054/
+Which makes project available at [http://localhost:8054/](http://localhost:8054/)
 
 
 ## Build
@@ -27,6 +27,18 @@ Which makes project available at http://localhost:8054/
 
 ## Deploying to Production
 
+Create deployment config:
+
+```
+cp backend/.env.dist backend/.env
+vi backend/.env
+```
+
 NOTE: You'll require the correct AWS credentials configured in your user account in order to deploy.
 
 `yarn run deploy`
+
+Or individual components:
+
+`yarn run deploy-frontend`
+`yarn run deploy-backend`

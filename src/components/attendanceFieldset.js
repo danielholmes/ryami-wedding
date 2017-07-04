@@ -1,12 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Select from "./select";
-import moment from "moment";
 
 const AttendanceFieldset = ({label, date, value: {emotion, isComing, amount}, onChange}) => {
-  const formattedDate = moment(date).format('dddd [the] Do [of] MMMM YYYY');
   return <div>
-    On {formattedDate}, we are
+    On {date}, we are
     <Select options={['excited', 'sad']} value={emotion} onChange={onChange.bind(this, 'emotion')} />
     to say that we
     <Select options={new Map([[true, 'will be there'], [false, 'will NOT be there']])} value={isComing}
@@ -22,7 +20,7 @@ const AttendanceFieldset = ({label, date, value: {emotion, isComing, amount}, on
 
 AttendanceFieldset.propTypes = {
   label: PropTypes.string.isRequired,
-  date: PropTypes.instanceOf(Date).isRequired,
+  date: PropTypes.string.isRequired,
   value: PropTypes.shape({
     emotion: PropTypes.string,
     isComing: PropTypes.oneOf([true, false, '']),
