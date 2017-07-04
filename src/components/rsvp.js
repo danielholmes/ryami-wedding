@@ -17,26 +17,29 @@ class RSVP extends React.Component {
     super(props);
 
     this.state = {
-      hearAdjective: '',
-      sangeetAttendance: {
-        emotion: '',
-        isComing: '',
-        amount: ''
+      rsvp: {
+        hearAdjective: '',
+        sangeetAttendance: {
+          emotion: '',
+          isComing: '',
+          amount: ''
+        },
+        ceremonyAttendance: {
+          emotion: '',
+          isComing: '',
+          amount: ''
+        },
+        contact: '',
+        haveDietaryRequirements: '',
+        dietaryRequirements: [''],
+        song: '',
+        artist: '',
+        adviceVerb: '',
+        adviceNeverVerb: '',
+        adviceYears: '',
+        adviceNoun: ''
       },
-      ceremonyAttendance: {
-        emotion: '',
-        isComing: '',
-        amount: ''
-      },
-      contact: '',
-      haveDietaryRequirements: '',
-      dietaryRequirements: [''],
-      song: '',
-      artist: '',
-      adviceVerb: '',
-      adviceNeverVerb: '',
-      adviceYears: '',
-      adviceNoun: ''
+      isSending: false
     };
 
     this.onSubmit = this.onSubmit.bind(this);
@@ -45,26 +48,51 @@ class RSVP extends React.Component {
   onSubmit(e) {
     e.preventDefault();
 
-    console.log('TODO: Save');
+    this.setState({isSending: true});
 
-    if (this.state.ceremonyAttendance.isComing || this.state.sangeetAttendance.isComing) {
-      this.props.history.push('/rsvp/see-you-there/');
-      return;
-    }
+    fetch('https://epslxa0lyc.execute-api.ap-southeast-2.amazonaws.com/prod', {
+      method: 'POST',
+      body: JSON.stringify(this.state.rsvp)
+    })
+      .then(r => r.json())
+      .then(r => {
+        if (!r.ok) {
+          throw new Error(JSON.stringify(r));
+        }
 
-    this.props.history.push('/rsvp/not-coming/');
+        if (this.isComing()) {
+          this.props.history.push('/rsvp/see-you-there/');
+          return;
+        }
+
+        this.props.history.push('/rsvp/not-coming/');
+      })
+      .catch(r => {
+        this.setState({isSending: false});
+        console.log('error', r)
+      });
   }
 
   createChangeHandler(name) {
-    return value => this.setState({[name]: value});
+    return value => {
+      const newRsvp = Object.assign({}, this.state.rsvp);
+      newRsvp[name] = value;
+      this.setState({rsvp: newRsvp});
+    }
   }
 
   createAttendanceChangeHandler(name) {
     return (subName, value) => {
-      const newAttendance = Object.assign({}, this.state[name]);
+      const newAttendance = Object.assign({}, this.state.rsvp[name]);
       newAttendance[subName] = value;
-      this.setState({[name]: newAttendance})
+      const newRsvp = Object.assign({}, this.state.rsvp);
+      newRsvp[name] = newAttendance;
+      this.setState({rsvp: newRsvp})
     };
+  }
+
+  isComing() {
+    return this.state.rsvp.ceremonyAttendance.isComing || this.state.rsvp.sangeetAttendance.isComing;
   }
 
   render() {
@@ -74,49 +102,54 @@ class RSVP extends React.Component {
         <div>Dear Ami and Ryan,</div>
         <div>
           I am / We are so
-          <TextField help="adjective" value={this.state.hearAdjective}
+          <TextField help="adjective" value={this.state.rsvp.hearAdjective}
                      onChange={this.createChangeHandler('hearAdjective')} />
           to hear about your upcoming wedding celebrations!
         </div>
-        <AttendanceFieldset label="Sangeet" date="Friday the 24th of November 2017" value={this.state.sangeetAttendance}
+        <AttendanceFieldset label="Sangeet" date="Friday the 24th of November 2017"
+                            value={this.state.rsvp.sangeetAttendance}
                             onChange={this.createAttendanceChangeHandler('sangeetAttendance')} />
         <AttendanceFieldset label="Wedding" date="Sunday the 26th of November 2017"
-                            value={this.state.ceremonyAttendance}
+                            value={this.state.rsvp.ceremonyAttendance}
                             onChange={this.createAttendanceChangeHandler('ceremonyAttendance')} />
-        {(this.state.ceremonyAttendance.isComing || this.state.sangeetAttendance.isComing) && <div>
+        {this.isComing() && <div>
           <div>
             You can contact us on
-            <TextField help="number or email" value={this.state.contact} onChange={this.createChangeHandler('contact')} />
+            <TextField help="number or email" value={this.state.rsvp.contact}
+                       onChange={this.createChangeHandler('contact')} />
             if you need more information.
           </div>
           <div>
             With the dietary stuff,
             <Select options={new Map([[false, 'we have no requirements'], [true, 'we have some requirements']])}
-                    value={this.state.haveDietaryRequirements}
+                    value={this.state.rsvp.haveDietaryRequirements}
                     onChange={this.createChangeHandler('haveDietaryRequirements')} />.
-            {this.state.haveDietaryRequirements &&
-              <DietaryList value={this.state.dietaryRequirements}
+            {this.state.rsvp.haveDietaryRequirements &&
+              <DietaryList value={this.state.rsvp.dietaryRequirements}
                            onChange={this.createChangeHandler('dietaryRequirements')} />}
           </div>
           <div>
             If you play
-            <TextField help="song" value={this.state.song} onChange={this.createChangeHandler('song')} /> by
-            <TextField help="artist" value={this.state.artist} onChange={this.createChangeHandler('artist')} />, you'll
-            see me / us bust some moves!
+            <TextField help="song" value={this.state.rsvp.song} onChange={this.createChangeHandler('song')} /> by
+            <TextField help="artist" value={this.state.rsvp.artist} onChange={this.createChangeHandler('artist')} />,
+            you'll see me / us bust some moves!
           </div>
           <div>
             A final bit of marriage advice... always remember to
-            <TextField help="verb" value={this.state.adviceVerb} onChange={this.createChangeHandler('adviceVerb')} />,
+            <TextField help="verb" value={this.state.rsvp.adviceVerb}
+                       onChange={this.createChangeHandler('adviceVerb')} />,
             never
-            <TextField help="verb" value={this.state.adviceNeverVerb}
+            <TextField help="verb" value={this.state.rsvp.adviceNeverVerb}
                        onChange={this.createChangeHandler('adviceNeverVerb')} />,
             and we wish you
-            <TextField help="#" value={this.state.adviceYears} onChange={this.createChangeHandler('adviceYears')} />
+            <TextField help="#" value={this.state.rsvp.adviceYears}
+                       onChange={this.createChangeHandler('adviceYears')} />
             years of
-            <TextField help="noun" value={this.state.adviceNoun} onChange={this.createChangeHandler('adviceNoun')} />.
+            <TextField help="noun" value={this.state.rsvp.adviceNoun}
+                       onChange={this.createChangeHandler('adviceNoun')} />.
           </div>
         </div>}
-        <input type="submit" value="Send" />
+        <button type="submit" disabled={this.state.isSending}>Send</button>
       </form>
     </div>;
   }

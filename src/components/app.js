@@ -7,14 +7,6 @@ import RSVPSeeYouThere from './rsvpSeeYouThere';
 import RSVPNotComing from './rsvpNotComing';
 
 export default () => {
-  fetch('https://epslxa0lyc.execute-api.ap-southeast-2.amazonaws.com/prod', {
-    method: 'POST',
-    body: JSON.stringify({'hello': 'world', 'something': false})
-  })
-    .then(r => r.json())
-    .then(r => console.log('success', r))
-    .catch(r => console.log('error', r));
-
   return <HashRouter>
     <div>
       <h1>Ryami Wedding</h1>
