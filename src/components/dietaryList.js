@@ -16,15 +16,15 @@ const DietaryList = ({value, onChange}) => {
     onChange(newValue);
   };
 
-  return <div>
+  return <div className="dietary-list">
     <ul>
       {value.map((subValue, i) =>
         <li key={i}>
-          <TextField help="Johnson can't eat..." value={subValue} onChange={createRowChangeHandler(i)} />
-          {i > 0 && <a role="button" onClick={createRowRemoveHandler(i)}>[X]</a>}
+          <TextField help="Johnson can't eat..." value={subValue} onChange={createRowChangeHandler(i)} /> {i > 0 &&
+            <button type="button" onClick={createRowRemoveHandler(i)}>X</button>}
         </li>)}
     </ul>
-    <a role="button" onClick={() => onChange(value.concat(['']))}>Add requirement for another person</a>
+    <button type="button" onClick={() => onChange(value.concat(['']))}>Add requirement for another person</button>
   </div>;
 };
 

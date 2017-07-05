@@ -1,5 +1,6 @@
 import React from 'react';
+import Panel from './panel';
 
 export default () => {
-  return <div>Thank you for RSVPing. Content TBC.</div>;
+  return <Panel>Thank you for your RSVP.</Panel>;
 }

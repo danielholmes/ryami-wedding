@@ -23,11 +23,15 @@ function createEmail(params) {
   var emailContent = `
 You've received a new RSVP. Details below:
 
+Name:                    ${params.name}
+
 How they feel:           ${params.hearAdjective}
 
 ${formatEventAttendance('Sangeet', params.sangeetAttendance)}
 
 ${formatEventAttendance('Ceremony', params.ceremonyAttendance)}
+
+Wouldn't miss it if:     ${params.wouldntMissIt}
 
 Contact:                 ${params.contact}
 

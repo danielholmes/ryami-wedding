@@ -27,16 +27,12 @@ module.exports = {
         }
       },
       {
-        test: /\.(jpg|png)$/,
-        use: ['url-loader?mimetype=image/png']
-      },
-      {
         test: /\.css$/,
         use: ['style-loader', 'css-loader']
       },
       {
-        test: /\.(woff|woff2|eot|ttf|otf)$/,
-        use: ['file-loader']
+        test: /\.jpe?g$|\.ico$|\.gif$|\.png$|\.svg$|\.woff$|\.ttf$/,
+        loader: 'file-loader?name=[name].[ext]'  // <-- retain original file name
       }
     ]
   },
@@ -53,7 +49,7 @@ module.exports = {
       },
       comments: false
     }),
-    new CleanWebpackPlugin(['dist/*.js', 'dist/*.js.map', 'dist/*.css', 'dist/*.woff']),
+    new CleanWebpackPlugin(['dist/*.*']),
     new HtmlWebpackPlugin({
       template: 'src/index.html'
     })

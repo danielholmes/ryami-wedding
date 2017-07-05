@@ -1,12 +1,92 @@
-body {
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+@font-face {
+    font-family: 'MainFont';
+    src:  url('../fonts/Cardo-Regular.woff') format('woff');
+    font-weight: 600;
+    font-style: normal;
 }
-form > div, form > div > div {
+body {
+    font-size: 1.3em;
+    font-family: "MainFont", Garamond, Palatino, serif;
+    font-variant: small-caps;
+    background: url(../images/bg.jpg);
+    background-repeat: repeat;
+}
+h1 {
+    text-align: center;
+    margin-bottom: 15px;
+    max-width: 100%;
+}
+h1 img {
+    max-width: 100%;
+}
+nav {
+    width: 100%;
+    text-align: center;
+    font-size: 1.8em;
     margin-bottom: 15px;
 }
-a[role=button] {
-    cursor: pointer;
-    border: 1px solid #999999;
+nav a {
+    display: inline-block;
+    line-height: 1em;
+    text-decoration: none;
+    text-transform: uppercase;
+    padding: 0 16px;
+    margin: 0;
+    color: #8f8f8f;
+    border-left: 1px solid #8f8f8f;
+}
+nav a:first-child {
+    border: none;
+}
+nav a:hover {
+    color: #666666;
+}
+nav a.active {
+    color: #555555;
+}
+#main-content {
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 100;
+    }
+}
+.panel {
+    animation: 0.5s ease-out 0s 1 fadeIn;
+}
+.dietary-list ul {
+    list-style: none;
+}
+.dietary-list ul li input {
+    width: 80%;
+}
+form .rsvp-section {
+    margin-bottom: 15px;
+}
+form select, form input {
+    font-family: "MainFont", Garamond, Palatino, serif;
+    font-variant: small-caps;
+    font-size: 1em;
     border-radius: 3px;
-    padding: 3px;
+    background: white;
+}
+form button {
+    font-family: "MainFont", Garamond, Palatino, serif;
+    font-variant: small-caps;
+    font-size: 1em;
+    background: white;
+    border-radius: 3px;
+    border-width: 1px;
+    border-style: solid;
+    border-image: none;
+    padding: 3px 10px;
+}
+form button[type=submit] {
+    font-size: 1.3em;
 }

@@ -5,6 +5,7 @@ import AttendanceFieldset from "./attendanceFieldset";
 import {withRouter} from "react-router-dom";
 import Select from "./select";
 import DietaryList from "./dietaryList";
+import Panel from './panel';
 
 class RSVP extends React.Component {
   static propTypes = {
@@ -29,6 +30,7 @@ class RSVP extends React.Component {
           isComing: '',
           amount: ''
         },
+        wouldntMissIt: '',
         contact: '',
         haveDietaryRequirements: '',
         dietaryRequirements: [''],
@@ -37,7 +39,8 @@ class RSVP extends React.Component {
         adviceVerb: '',
         adviceNeverVerb: '',
         adviceYears: '',
-        adviceNoun: ''
+        adviceNoun: '',
+        name: ''
       },
       isSending: false
     };
@@ -96,15 +99,13 @@ class RSVP extends React.Component {
   }
 
   render() {
-    return <div>
-      <h2>RSVP</h2>
+    return <Panel>
       <form onSubmit={this.onSubmit}>
-        <div>Dear Ami and Ryan,</div>
-        <div>
-          I am / We are so
-          <TextField help="adjective" value={this.state.rsvp.hearAdjective}
-                     onChange={this.createChangeHandler('hearAdjective')} />
-          to hear about your upcoming wedding celebrations!
+        <div className="rsvp-section">Dear Ami and Ryan,</div>
+        <div className="rsvp-section">
+          I am / We are so <TextField help="adjective" value={this.state.rsvp.hearAdjective}
+                                      onChange={this.createChangeHandler('hearAdjective')} /> to hear about your
+          upcoming wedding celebrations!
         </div>
         <AttendanceFieldset label="Sangeet" date="Friday the 24th of November 2017"
                             value={this.state.rsvp.sangeetAttendance}
@@ -113,45 +114,48 @@ class RSVP extends React.Component {
                             value={this.state.rsvp.ceremonyAttendance}
                             onChange={this.createAttendanceChangeHandler('ceremonyAttendance')} />
         {this.isComing() && <div>
-          <div>
-            You can contact us on
-            <TextField help="number or email" value={this.state.rsvp.contact}
-                       onChange={this.createChangeHandler('contact')} />
-            if you need more information.
+          <div className="rsvp-section">
+            Wouldn't miss it, even if <TextField help="blank" value={this.state.rsvp.wouldntMissIt}
+                                                 onChange={this.createChangeHandler('wouldntMissIt')} />.
           </div>
-          <div>
-            With the dietary stuff,
-            <Select options={new Map([[false, 'we have no requirements'], [true, 'we have some requirements']])}
-                    value={this.state.rsvp.haveDietaryRequirements}
-                    onChange={this.createChangeHandler('haveDietaryRequirements')} />.
-            {this.state.rsvp.haveDietaryRequirements &&
+          <div className="rsvp-section">
+            You can contact us on <TextField help="number or email" value={this.state.rsvp.contact}
+                                             onChange={this.createChangeHandler('contact')} /> if you need more
+            information.
+          </div>
+          <div className="rsvp-section">
+            With the dietary stuff, <Select options={new Map([[false, 'we have no requirements'], [true, 'we have some requirements']])}
+                                            value={this.state.rsvp.haveDietaryRequirements}
+                                            onChange={this.createChangeHandler('haveDietaryRequirements')} />. {this.state.rsvp.haveDietaryRequirements &&
               <DietaryList value={this.state.rsvp.dietaryRequirements}
                            onChange={this.createChangeHandler('dietaryRequirements')} />}
           </div>
-          <div>
-            If you play
-            <TextField help="song" value={this.state.rsvp.song} onChange={this.createChangeHandler('song')} /> by
-            <TextField help="artist" value={this.state.rsvp.artist} onChange={this.createChangeHandler('artist')} />,
+          <div className="rsvp-section">
+            If you play <TextField help="song" value={this.state.rsvp.song}
+                                   onChange={this.createChangeHandler('song')} /> by <TextField help="artist"
+                                                                                                value={this.state.rsvp.artist}
+                                                                                                onChange={this.createChangeHandler('artist')} />,
             you'll see me / us bust some moves!
           </div>
-          <div>
-            A final bit of marriage advice... always remember to
-            <TextField help="verb" value={this.state.rsvp.adviceVerb}
-                       onChange={this.createChangeHandler('adviceVerb')} />,
-            never
-            <TextField help="verb" value={this.state.rsvp.adviceNeverVerb}
-                       onChange={this.createChangeHandler('adviceNeverVerb')} />,
-            and we wish you
-            <TextField help="#" value={this.state.rsvp.adviceYears}
-                       onChange={this.createChangeHandler('adviceYears')} />
-            years of
-            <TextField help="noun" value={this.state.rsvp.adviceNoun}
-                       onChange={this.createChangeHandler('adviceNoun')} />.
+          <div className="rsvp-section">
+            A final bit of marriage advice... always remember
+            to <TextField help="verb" value={this.state.rsvp.adviceVerb}
+                          onChange={this.createChangeHandler('adviceVerb')} />,
+            never <TextField help="verb" value={this.state.rsvp.adviceNeverVerb}
+                             onChange={this.createChangeHandler('adviceNeverVerb')} />,
+            and we wish you <TextField help="#" value={this.state.rsvp.adviceYears}
+                                       onChange={this.createChangeHandler('adviceYears')} /> years
+            of <TextField help="noun" value={this.state.rsvp.adviceNoun}
+                          onChange={this.createChangeHandler('adviceNoun')} />.
           </div>
         </div>}
-        <button type="submit" disabled={this.state.isSending}>Send</button>
+        <div className="rsvp-section">
+          Love from, <TextField help="name here" value={this.state.rsvp.name}
+                                onChange={this.createChangeHandler('name')} />
+        </div>
+        <button type="submit" disabled={this.state.isSending}>{this.state.isSending ? 'Sending...' : 'Send'}</button>
       </form>
-    </div>;
+    </Panel>;
   }
 }
 
