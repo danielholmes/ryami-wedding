@@ -8,7 +8,7 @@ function formatEventAttendance(name, event) {
 ${name} Attendance:
     Emotion: ${event.emotion}
     Coming?: ${booleanToString(event.isComing)}
-    Amount:  ${event.amount}
+    Number:  ${event.amount}
 `;
 }
 
