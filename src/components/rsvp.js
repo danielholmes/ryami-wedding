@@ -23,12 +23,13 @@ class RSVP extends React.Component {
         sangeetAttendance: {
           emotion: '',
           isComing: '',
-          amount: ''
+          number: ''
         },
         ceremonyAttendance: {
           emotion: '',
           isComing: '',
-          amount: ''
+          number: '',
+          numberOfChildren: ''
         },
         wouldntMissIt: '',
         contact: '',
@@ -110,7 +111,7 @@ class RSVP extends React.Component {
         <AttendanceFieldset label="Sangeet" date="Friday the 24th of November 2017"
                             value={this.state.rsvp.sangeetAttendance}
                             onChange={this.createAttendanceChangeHandler('sangeetAttendance')} />
-        <AttendanceFieldset label="Wedding" date="Sunday the 26th of November 2017"
+        <AttendanceFieldset label="Wedding" showChildren date="Sunday the 26th of November 2017"
                             value={this.state.rsvp.ceremonyAttendance}
                             onChange={this.createAttendanceChangeHandler('ceremonyAttendance')} />
         {this.isComing() && <div>

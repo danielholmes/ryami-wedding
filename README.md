@@ -15,7 +15,7 @@ RSVP form and information for Ryan and Ami's Wedding.
 
 Running a dev server:
 
-`yarn run serve`
+`yarn start`
 
 Which makes project available at [http://localhost:8054/](http://localhost:8054/)
 

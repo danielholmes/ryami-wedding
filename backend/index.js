@@ -3,13 +3,16 @@ var ses = new aws.SES({
   region: 'us-west-2'
 });
 
-function formatEventAttendance(name, event) {
-  return `
+function formatEventAttendance(name, attendance, showChildren = false) {
+  let output = `
 ${name} Attendance:
-    Emotion: ${event.emotion}
-    Coming?: ${booleanToString(event.isComing)}
-    Number:  ${event.amount}
-`;
+    Emotion:   ${attendance.emotion}
+    Coming?:   ${booleanToString(attendance.isComing)}
+    Number:    ${attendance.number}`;
+  if (showChildren) {
+    output += `\n    # of kids: ${attendance.numberOfChildren}`;
+  }
+  return output;
 }
 
 function booleanToString(bool) {
@@ -29,7 +32,7 @@ How they feel:           ${params.hearAdjective}
 
 ${formatEventAttendance('Sangeet', params.sangeetAttendance)}
 
-${formatEventAttendance('Ceremony', params.ceremonyAttendance)}
+${formatEventAttendance('Ceremony', params.ceremonyAttendance, true)}
 
 Wouldn't miss it if:     ${params.wouldntMissIt}
 
