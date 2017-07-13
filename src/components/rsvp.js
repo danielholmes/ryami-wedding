@@ -54,7 +54,7 @@ class RSVP extends React.Component {
 
     this.setState({isSending: true});
 
-    fetch('https://epslxa0lyc.execute-api.ap-southeast-2.amazonaws.com/prod', {
+    fetch('https://api.ryamiwedding.com', {
       method: 'POST',
       body: JSON.stringify(this.state.rsvp)
     })
