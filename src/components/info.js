@@ -1,10 +1,48 @@
 import React from 'react';
 import Panel from './panel';
+import headingUrl from '../images/Heading-Outfit-Inspo.png';
+import sareeUrl from '../images/Saree.png';
+import lehengaUrl from '../images/Lehenga.png';
+import kurtiSalwarUrl from '../images/Kurti-Salwar.png';
+import kurtaUrl from '../images/Kurta.png';
 
 export default () => {
-  return <Panel>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tempus semper sem. Fusce vel ipsum pellentesque, faucibus nunc eget, rhoncus velit. Sed at magna ut purus vehicula viverra. In vehicula faucibus lorem, facilisis vulputate tortor dapibus quis. Maecenas ac sem velit. Quisque in tincidunt quam, a porta diam. Aenean lorem orci, iaculis a risus eu, sodales auctor mauris. Sed scelerisque accumsan est ac blandit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce sagittis euismod odio vel dictum. Nam elementum magna id tellus molestie, vitae lobortis erat blandit. Donec consectetur sit amet orci et finibus. Nulla rhoncus tortor in libero pulvinar, id placerat augue lacinia. Maecenas convallis justo augue. Nulla facilisi. Nullam non risus sit amet nibh vulputate mollis eget ac dolor.</p>
-    <p>Nullam at convallis magna. Cras maximus ligula ut turpis porttitor ultricies. Vestibulum pulvinar risus quis pellentesque bibendum. Vivamus dolor nunc, blandit iaculis urna non, molestie rhoncus orci. Duis dictum lorem id ante sagittis, maximus ultrices libero commodo. Quisque vulputate risus tellus, eget feugiat mi faucibus a. Aenean eu mi et nisi ultrices mattis. Donec id ornare dolor. Ut lectus eros, tincidunt nec dignissim id, pulvinar a erat. Mauris aliquet nisl non nibh gravida, eu dapibus libero placerat. Nam at quam eleifend, blandit ipsum et, hendrerit lectus. Quisque eget mauris vitae eros aliquet lacinia at et nisl.</p>
-    <p>Nam pellentesque sapien eget lacinia luctus. Duis consequat turpis at lorem laoreet, ut rutrum purus bibendum. Aliquam erat volutpat. Sed ut nunc et nisi sagittis lacinia pretium non urna. Mauris in pellentesque nibh. Ut ac odio leo. Donec elementum eget tortor nec facilisis. Etiam convallis condimentum velit eget imperdiet. Vestibulum imperdiet, urna et tincidunt interdum, neque nibh rhoncus turpis, ac hendrerit tellus augue et lectus. Ut purus mi, iaculis eget odio vel, imperdiet dignissim elit.</p><p>Sed ac mi pulvinar, tincidunt felis eu, porta ipsum. Donec nec pretium est, quis ultricies lacus. Sed non neque eu eros tristique molestie at sit amet urna. Ut sit amet neque bibendum leo ornare vestibulum. Cras venenatis diam et enim viverra, ac placerat lacus aliquam. Cras varius mi est, at tempus felis iaculis vestibulum. In eget tincidunt libero. Phasellus id orci velit. Donec at lacus ut diam blandit volutpat. Aliquam finibus orci ut lacus gravida, vitae scelerisque tortor ultrices. Praesent sollicitudin erat metus, eu sodales libero fringilla non. Ut eget rhoncus eros, sit amet euismod ex.</p>
+  return <Panel className="content">
+    <img src={headingUrl} width="400" height="200" alt=""/>
+    <p>
+      If you would like to indulge us by dressing up Bollywood style, we recommend shopping at George Street in
+      Liverpool. There are some awesome Indian stores there with many options.
+    </p>
+    <p>Alternatively, try finding a friend who has some Indian clothes you can borrow.</p>
+    <p>Here are some options for the girls. </p>
+    <table width="400" cellPadding="2">
+      <tbody>
+      <tr>
+        <td><img src={sareeUrl} width="300" height="450" alt=""/></td>
+        <td><img src={lehengaUrl} width="300" height="450" alt=""/></td>
+        <td><img src={kurtiSalwarUrl} width="300" height="450" alt=""/></td>
+      </tr>
+      <tr>
+        <td>A &quot;saree&quot;  is a blouse and a long sheet of fabric that wraps around the body. </td>
+        <td>
+          A &quot;lehenga&quot;  is an easy-to-wear version of a saree. It consists of a blouse with long skirt and
+          optional scarf.
+        </td>
+        <td>
+          A more conservative option is the &quot;Salwar,&quot; or &quot;Kurti&quot; which is a  dress over
+          lightweight pants
+        </td>
+      </tr>
+      </tbody>
+    </table>
+    <br />
+    <br />
+    <p>Gentlemen can wear a &quot;kurta&quot; which is a knee-length shirt with pants.</p>
+    <p><img src={kurtaUrl} width="300" height="450" alt=""/></p>
+    <p>It's best to wear comfortable shoes, since the ceremony and reception will both be on grass.</p>
+    <p>
+      Indian weddings are all about colour. If you don't want to dress up in Indian clothes, putting on a bright and
+      colourful outfit would really add to the atmosphere.
+    </p>
   </Panel>;
 }

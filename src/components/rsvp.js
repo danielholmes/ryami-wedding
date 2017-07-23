@@ -65,11 +65,11 @@ class RSVP extends React.Component {
         }
 
         if (this.isComing()) {
-          this.props.history.push('/rsvp/see-you-there/');
+          this.props.history.push('/see-you-there/');
           return;
         }
 
-        this.props.history.push('/rsvp/not-coming/');
+        this.props.history.push('/not-coming/');
       })
       .catch(r => {
         this.setState({isSending: false});

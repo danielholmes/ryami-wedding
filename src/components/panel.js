@@ -1,5 +1,5 @@
 import React from 'react';
 
-export default ({children}) => {
-  return <div className="panel">{children}</div>;
+export default ({children, className}) => {
+  return <div className={`panel ${className}`}>{children}</div>;
 }

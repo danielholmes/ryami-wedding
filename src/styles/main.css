@@ -45,7 +45,7 @@ nav a.active {
     color: #555555;
 }
 #main-content {
-    max-width: 800px;
+    max-width: 960px;
     margin-left: auto;
     margin-right: auto;
 }
@@ -89,4 +89,13 @@ form button {
 }
 form button[type=submit] {
     font-size: 1.3em;
+}
+.content
+{
+    margin: 0 auto;
+    align-items: center;
+    text-align: center;
+}
+h3 {
+    font-style: italic;
 }
