@@ -118,7 +118,7 @@ export default () => {
     <h3>Laaja Homam</h3>
     <p>
       Lava helps Ami feed puffed rice into the fire as an expression of sibling support. Through this food offering,
-      Ami seeks a long life for Ryan and for 500 of her family.
+      Ami seeks a long life for Ryan and for their families.
     </p>
     <img src={puffedRiceUrl} width="333" height="500" alt=""/>
 
