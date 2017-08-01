@@ -138,18 +138,18 @@ class RSVP extends React.Component {
                                                                                                 onChange={this.createChangeHandler('artist')} />,
             you'll see me / us bust some moves!
           </div>
-          <div className="rsvp-section">
-            A final bit of marriage advice... always remember
-            to <TextField help="verb" value={this.state.rsvp.adviceVerb}
-                          onChange={this.createChangeHandler('adviceVerb')} />,
-            never <TextField help="verb" value={this.state.rsvp.adviceNeverVerb}
-                             onChange={this.createChangeHandler('adviceNeverVerb')} />,
-            and we wish you <TextField help="#" value={this.state.rsvp.adviceYears}
-                                       onChange={this.createChangeHandler('adviceYears')} /> years
-            of <TextField help="noun" value={this.state.rsvp.adviceNoun}
-                          onChange={this.createChangeHandler('adviceNoun')} />.
-          </div>
         </div>}
+        <div className="rsvp-section">
+          A final bit of marriage advice... always remember
+          to <TextField help="verb" value={this.state.rsvp.adviceVerb}
+                        onChange={this.createChangeHandler('adviceVerb')} />,
+          never <TextField help="verb" value={this.state.rsvp.adviceNeverVerb}
+                           onChange={this.createChangeHandler('adviceNeverVerb')} />,
+          and we wish you <TextField help="#" value={this.state.rsvp.adviceYears}
+                                     onChange={this.createChangeHandler('adviceYears')} /> years
+          of <TextField help="noun" value={this.state.rsvp.adviceNoun}
+                        onChange={this.createChangeHandler('adviceNoun')} />.
+        </div>
         <div className="rsvp-section">
           Love from, <TextField help="name here" value={this.state.rsvp.name}
                                 onChange={this.createChangeHandler('name')} />

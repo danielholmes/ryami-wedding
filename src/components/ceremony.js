@@ -58,14 +58,12 @@ export default () => {
     </p>
     <img src={mandapUrl} width="960" height="640" alt=""/>
 
-    <h3>Kanyadanam</h3>
+    <h3>Pala Dhanam</h3>
     <p>
-      Ami sits on her father's lap. Auspicious items like a coconut, betel leaves, and nuts are placed in Ami's hands.
-      A grass ring is placed on Ami's head, and over it is placed a
-      <a href="https://en.wikipedia.org/wiki/Yoke" target="blank">yoke</a>. Ami's wedding necklace is placed on the
-      aperture of the yoke, and water is poured though the aperture.
+      Gifts are exchanged between the families of the bride and groom. A new saree is given to Ami by Ryan's parents
+      as a gift.
     </p>
-    <img src={kanyadanamUrl} width="333" height="500" alt=""/>
+    <img src={giftsUrl} width="500" height="333" alt=""/>
 
     <h3>Mangalyadharanam</h3>
     <p>
@@ -77,12 +75,14 @@ export default () => {
     </p>
     <img src={thaliUrl} width="500" height="333" alt=""/>
 
-    <h3>Pala Dhanam</h3>
+    <h3>Kanyadanam</h3>
     <p>
-      Gifts are exchanged between the families of the bride and groom. A new saree is given to Ami by Ryan's parents
-      as a gift.
+      Ami sits on her father's lap. Auspicious items like a coconut, betel leaves, and nuts are placed in Ami's hands.
+      A grass ring is placed on Ami's head, and over it is placed a
+      <a href="https://en.wikipedia.org/wiki/Yoke" target="blank">yoke</a>. Ami's wedding necklace is placed on the
+      aperture of the yoke, and water is poured though the aperture.
     </p>
-    <img src={giftsUrl} width="500" height="333" alt=""/>
+    <img src={kanyadanamUrl} width="333" height="500" alt=""/>
 
     <h3>Intermission - 30 minutes</h3>
     <p>
