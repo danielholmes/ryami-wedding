@@ -11,7 +11,7 @@ RSVP form and information for Ryan and Ami's Wedding.
 
 ## Dev Setup
 
-`yarn install`
+`yarn`
 
 Running a dev server:
 
