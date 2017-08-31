@@ -6,7 +6,6 @@ var ses = new aws.SES({
 function formatEventAttendance(name, attendance, showChildren = false) {
   let output = `
 ${name} Attendance:
-    Emotion:   ${attendance.emotion}
     Coming?:   ${booleanToString(attendance.isComing)}
     Number:    ${attendance.number}`;
   if (showChildren) {

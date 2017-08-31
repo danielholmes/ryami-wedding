@@ -21,12 +21,10 @@ class RSVP extends React.Component {
       rsvp: {
         hearAdjective: '',
         sangeetAttendance: {
-          emotion: '',
           isComing: '',
           number: ''
         },
         ceremonyAttendance: {
-          emotion: '',
           isComing: '',
           number: '',
           numberOfChildren: ''
