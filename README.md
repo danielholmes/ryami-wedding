@@ -36,7 +36,7 @@ vi backend/.env
 
 NOTE: You'll require the correct AWS credentials configured in your user account in order to deploy.
 
-`yarn run deploy`
+`yarn deploy`
 
 Or individual components:
 
