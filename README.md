@@ -22,7 +22,7 @@ Which makes project available at [http://localhost:8054/](http://localhost:8054/
 
 ## Build
 
-`yarn run build`
+`yarn build`
 
 
 ## Deploying to Production
