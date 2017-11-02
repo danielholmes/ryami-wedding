@@ -32,7 +32,10 @@ module.exports = {
       },
       {
         test: /\.jpe?g$|\.ico$|\.gif$|\.png$|\.svg$|\.woff$|\.ttf$/,
-        loader: 'file-loader?name=[name].[ext]'  // <-- retain original file name
+        use: {
+          loader: 'file-loader',
+          options: {name: '[name].[ext]'}
+        }
       }
     ]
   },
@@ -44,14 +47,14 @@ module.exports = {
     }),
     new UglifyJSPlugin({
       sourceMap: true,
-      warningsFilter: function (source) {
-        return false;
-      },
-      comments: false
+      warningsFilter: source => false,
+      uglifyOptions: {
+        output: {
+          comments: false
+        }
+      }
     }),
     new CleanWebpackPlugin(['dist/*.*']),
-    new HtmlWebpackPlugin({
-      template: 'src/index.html'
-    })
+    new HtmlWebpackPlugin({template: 'src/index.html'})
   ]
 };
